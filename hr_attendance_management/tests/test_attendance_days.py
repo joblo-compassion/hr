@@ -183,8 +183,8 @@ class TestAttendanceDays(SavepointCase):
         self.assertTrue(break_gilles.system_modified)
 
         # Duration
-        self.assertAlmostEqual(
-            att_jack_01.worked_hours + att_jack_02.worked_hours, 8.33, delta=0.01)
+        self.assertAlmostEqual(att_jack_01.worked_hours
+                               + att_jack_02.worked_hours, 8.33, delta=0.01)
         self.assertAlmostEqual(
             att_day_jack.paid_hours, 8.33, delta=0.01)
 
@@ -193,7 +193,6 @@ class TestAttendanceDays(SavepointCase):
 
         self.assertEqual(att_day_gilles.total_attendance,
                          att_gilles.worked_hours)
-
 
     def test_check_in_check_out(self):
 
@@ -338,7 +337,6 @@ class TestAttendanceDays(SavepointCase):
             for in_leave, date in date_data
         }
 
-
         for date in data.keys():
             self.env['hr.employee'].\
                 _cron_create_attendance(
@@ -412,4 +410,3 @@ class TestAttendanceDays(SavepointCase):
 
         self.assertEqual(gilles_old_day.due_hours, 0)
         self.assertEqual(gilles_new_day.due_hours, 5)
-
