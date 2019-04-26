@@ -430,7 +430,6 @@ class HrAttendanceDay(models.Model):
             lambda r: r.category_ids & rd.employee_id.category_ids)
         rd.coefficient = co_ids[0].coefficient if co_ids else 1
 
-
         # check public holiday
         if self.env['hr.holidays.public'].is_public_holiday(
                 rd.date, rd.employee_id.id):

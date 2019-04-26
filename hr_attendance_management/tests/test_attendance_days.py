@@ -3,7 +3,6 @@
 # Copyright (C) 2018 Compassion CH
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from datetime import datetime, timedelta
-from odoo import tools
 from odoo.tests import SavepointCase
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DF
 import logging
