@@ -61,6 +61,12 @@ class TestAttendanceDays(SavepointCase):
 # test holidays
 # test change day request
 
+# TODO test coefficient
+
+    ##########################################################################
+    #                                  CREATE                                #
+    ##########################################################################
+
     def test_create_attendances(self):
         """
         Create an attendance for jack
@@ -104,6 +110,10 @@ class TestAttendanceDays(SavepointCase):
             attendance_01.worked_hours + attendance_02.worked_hours,
             delta=0.01
         )
+
+    ##########################################################################
+    #                            BREAKS / RULES                              #
+    ##########################################################################
 
     def test_breaks_and_rules(self):
         """
@@ -194,6 +204,10 @@ class TestAttendanceDays(SavepointCase):
         self.assertEqual(att_day_gilles.total_attendance,
                          att_gilles.worked_hours)
 
+    ##########################################################################
+    #                        CHECK IN / CHECK OUT                            #
+    ##########################################################################
+
     def test_check_in_check_out(self):
 
         date = self.last_week[2]
@@ -240,6 +254,10 @@ class TestAttendanceDays(SavepointCase):
         self.assertEqual(att_day.paid_hours, 4.5)
 
         self.assertEqual(att_day.rule_id.name, '0 - 5')
+
+    ##########################################################################
+    #                              EXTRA HOURS                               #
+    ##########################################################################
 
     def test_max_extra_hours(self):
         """
@@ -316,7 +334,7 @@ class TestAttendanceDays(SavepointCase):
         we create the attendance days as would do the cron
             _cron_create_attendance
 
-        then we check that the due hour is correct
+        then we check that the paid hours is correct
         """
 
         leave = self.pieter_leave_request
